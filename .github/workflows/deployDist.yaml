@@ -11,11 +11,18 @@ jobs:
                 #    git clone  https://github.com/${{github.repository}}.git
                  uses: actions/checkout@v4
 
+              
                - name: Install node js 
                  uses: actions/setup-node@v4
                  with:
                    node-version: 20
-                   
+
+               - name: Cache Dependency
+                 uses: actions/cache@v4
+                 with: 
+                   path: ~/.npm  
+                   key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
                - name: print node version
                  run: node -v
                  
@@ -36,6 +43,12 @@ jobs:
                  with:
                    node-version: 20
                             
+               - name: Cache Dependency
+                 uses: actions/cache@v4
+                 with: 
+                   path: ~/.npm  
+                   key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} 
+                    
                - name: Install dependencies
                  run : npm ci
 
