@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, test, expect } from 'vitest'
 import App from './App';
 
-// this is a simple comment
+// this is a simple comment for skipping workflow if there is only a commented line getting pushed so we need to check 
 test('renders Github Actions heading', () => {
   render(<App />);
   const headingElement = screen.getByText(/Github Actions/i);
